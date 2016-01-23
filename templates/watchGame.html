@@ -1,0 +1,12 @@
+<template name="watchGame">
+	<div class="container">
+		<h1 class="text-center">Watch Game #{{ gameNum }}</h1>
+		<div class="row text-center">
+			{{#each players}}
+				<h2>Player #{{playerNum}}:</h2>
+				<h1>{{score}}</h1>
+				<br><br>
+			{{/each}}
+		</div>
+	</div>
+</template>
