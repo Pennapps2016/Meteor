@@ -1,6 +1,10 @@
 Games = new Mongo.Collection('games');
 
 if (Meteor.isClient) {
+	Accounts.ui.config({
+		passwordSignupFields: "USERNAME_ONLY"
+	});
+
 	Template.createGame.events({
 		"submit #newGameForm": function(event){
 			lastGame = Games.findOne({}, {sort: {createdAt: -1}});
@@ -58,7 +62,18 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 	Meteor.startup(function () {
-		// code to run on server at startup
+		if (Meteor.users.find().count() === 0 ) {
+			Accounts.createUser({
+				username: 'team',
+				email: 'max@mzmtech.com',
+				password: 'appleisgod',
+				profile: {
+					first_name: 'Shoot At',
+					last_name: 'Me',
+					company: 'Shoot At Me Team'
+				}
+			});
+		}
 	});
 
 	var Api = new Restivus({
