@@ -9,3 +9,9 @@
 .highcharts-container{
 	margin: 0 auto;
 }
+.repo_icon{
+	border-radius: 25%;
+}
+img {
+	height: 100px;
+}
