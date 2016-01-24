@@ -13,7 +13,6 @@
 	border-radius: 25%;
 	height: 80px;
 	width: 80px;
-	margin-top: 100px;
 	font-size: 50px;
 	text-decoration: none;
 	color: white;
@@ -23,4 +22,12 @@
 }
 .repo_icon:hover{
 	color : lightblue;
+}
+
+#gameButtons {
+	margin-top: 50px;
+}
+
+#linkIcons{
+	margin-top: 50px;
 }

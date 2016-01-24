@@ -5,34 +5,30 @@
 	<div class="container-fluid z-depth-3" style="margin: 0; margin-top: 0px; padding: 0;">
 		<div class="page-header" id="banner" style="color: white; background: #f44336; margin: 0; padding: 0;">
 			<div class="container" style="padding-top: 15px;">
-				<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="col-lg-6 col-md-6 col-sm-6 text-center">
 					<h1>ShootAt.Me</h1>
 					<p class="lead">Laser tag using QR codes and augmented (virtual) reality.</p>
 					{{#if currentUser}}
-						<div class="row  text-center">
-							<!--<div class="col-md-6">-->
+						<div class="row  text-center" id="gameButtons">
 							<a href="/createGame">
 								<button class="btn btn-default" style="background: #607d8b; margin-right: 15px;">
 									Create Game
 								</button>
 							</a>
-							<!--</div>-->
-							<!--<div class="col-md-3">-->
 							<a href="/game">
 								<button class="btn btn-default" style="background: #607d8b; margin-left: 15px;">
 									Join Game
 								</button>
 							</a>
-							<!--</div>-->
-
 						</div>
 					{{else}}
 						<h4 class="text-center">Please login</h4>
 					{{/if}}
-					<div class="text-center">
-						<a  href="https://github.com/Pennapps2016"><i class="fa fa-github repo_icon"></i></a>
+					<div class="text-center" id="linkIcons">
+						<a href="https://github.com/Pennapps2016"><i class="fa fa-github repo_icon"></i></a>
 						<a href="http://devpost.com/software/shootat-me-fiau5w"><i class="fa fa-link repo_icon" ></i></a>
-						<a href="http://shootat.me/app.apk"><i class="fa fa-android repo_icon" ></i></a>
+						<a href="https://github.com/Pennapps2016/iOS"><i class="fa fa-apple repo_icon" ></i></a>
+						<a href="https://github.com/Pennapps2016/Android"><i class="fa fa-android repo_icon" ></i></a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6" style="color: black">
@@ -62,9 +58,9 @@
 	<div class="container" style="margin-top: 35px;">
 		<div class="card">
 			<div class= "card-content">
-				<span class="card-title">What is shootat.me?</span>
+				<span class="card-title">What is ShootAt.Me?</span>
 				<p class="explanation">
-					shootat.me is a multiplatform, AR (Augmented Reality) game developed in Android Studio and Xcode during PennApps Spring XIII.
+					ShootAt.Me is a multiplatform, AR (Augmented Reality) game developed in Android Studio, XCode, and WebStorm during PennApps Spring XIII.
 				</p>
 			</div>
 		</div>
@@ -73,30 +69,30 @@
 				<span class="card-title">Who built shootat.me?</span>
 				<p class="explanation">
 				<ul>
-					<li>Max Matthews, Hacker guru and backend developer.</li>
-					<li>Tristan Wiley, Android developer.</li>
-					<li>Gurnoor Singh, IOS developer.</li>
-					<li>Eric cugota, android and frontend developer.</li>
+					<li>Max Matthews: Hacker guru and backend developer</li>
+					<li>Tristan Wiley: Android developer.</li>
+					<li>Gurnoor SinghL iOS developer.</li>
+					<li>Eric Cugota: Android and frontend developer</li>
 				</ul>
 				</p>
 			</div>
 		</div>
-		<div class="card">
-			<div class= "card-content">
-				<span class="card-title">What should I expect when I play it?</span>
-				<p class="explanation">
-					this is how the game is seen on your device. you have a reticle, a UI, and your objective is to "tag" as many enemy QR's as possible.
-				</p>
-			</div>
-		</div>
+		<!--<div class="card">-->
+		<!--<div class= "card-content">-->
+		<!--<span class="card-title">What should I expect when I play it?</span>-->
+		<!--<p class="explanation">-->
+		<!--this is how the game is seen on your device. you have a reticle, a UI, and your objective is to "tag" as many enemy QR's as possible.-->
+		<!--</p>-->
+		<!--</div>-->
+		<!--</div>-->
 		<div class="card">
 			<div class= "card-content">
 				<span class="card-title">What are the rules?</span>
 				<ul>
 					<li>Each player starts with 100 points(health).</li>
-					<li>Shooting an enemy removes health from him, shooting from a more further distance removes less points.</li>
-					<li>When a player looses all it's points, he's kicked out of the game.</li>
-					<li>The last man standing is the winner.</li>
+					<li>Shooting an enemy removes health from the shot player. Shooting from a more further distance removes less points.</li>
+					<li>When a player looses all their points, they're kicked out of the game.</li>
+					<li>The last player standing with health points is the winner.</li>
 				</ul>
 			</div>
 		</div>
