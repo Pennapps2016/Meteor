@@ -9,9 +9,18 @@
 .highcharts-container{
 	margin: 0 auto;
 }
-.repo_icon{
+.repo_icon,.fa,.fa-github{
 	border-radius: 25%;
+	height: 80px;
+	width: 80px;
+	margin-top: 100px;
+	font-size: 50px;
+	text-decoration: none;
+	color: white;
 }
-img {
-	height: 100px;
+.fa-external-link{
+	margin-top: 5px;
+}
+.repo_icon:hover{
+	color : lightblue;
 }
