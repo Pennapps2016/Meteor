@@ -168,6 +168,34 @@ if (Meteor.isServer) {
 		useDefaultAuth: true,
 		prettyJson: true
 	});
+	
+	Api.addRoute('newGame/:playerNum', {authRequired: false}, {
+	get: function () {
+	lastGame = Games.findOne({}, {sort: {createdAt: -1}});
+			numOfPlayers = parseInt(this.urlParams.playerNum);
+
+			if (lastGame && lastGame.gameNum) {
+				gameNum = lastGame.gameNum + 1;
+			} else {
+				gameNum = 1;
+			}
+			players = [];
+			for (i = 1; i <= numOfPlayers; i++) {
+				players.push({
+					'playerNum': i,
+					'score': 100
+				})
+			}
+			gameId = Games.insert({
+				"numberOfPlayers": numOfPlayers,
+				"createdAt": new Date(),
+				"gameNum": gameNum,
+				"players": players
+			});
+			return {"gameNum":gameNum};
+		}
+	})
+			
 
 	Api.addRoute(':gameId/:playerNum/:points', {authRequired: false}, {
 		get: function () {
