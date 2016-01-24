@@ -102,9 +102,9 @@ if (Meteor.isClient) {
 					},
 
 					stops: [
-						[0.9, '#00FF00'],
+						[0.9, '#f44336'],
 						[0.5, '#FFFF00'],
-						[0.1, '#f44336']
+						[0.1, '#00FF00']
 					],
 					lineWidth: 0,
 					minorTickInterval: null,
