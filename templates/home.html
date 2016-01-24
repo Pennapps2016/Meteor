@@ -1,28 +1,101 @@
 <template name="home">
-	<div class="container">
-		<h1 class="text-center">Welcome to laz-AR</h1>
-		{{#if currentUser}}
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-3 text-center">
-					<a href="/createGame">
-						<button class="btn btn-default">
-							Create Game
-						</button>
-					</a>
-				</div>
-				<div class="col-md-3 text-center">
-					<a href="/game">
-						<button class="btn btn-default">
-							Join Game
-						</button>
-					</a>
-				</div>
+	<div class="container text-center" style="padding: 10px;">
+		<i>Made with love at PennApps Spring 2016.</i>
+	</div>
+	<div class="container-fluid z-depth-3" style="margin: 0; margin-top: 0px; padding: 0;">
+		<div class="page-header" id="banner" style="color: white; background: #f44336; margin: 0; padding: 0;">
+			<div class="container" style="padding-top: 15px;">
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<h1>ShootAt.Me</h1>
+					<p class="lead">Lazer Tag with Augmented Reality, Prepare to Be Thrilled</p>
+					{{#if currentUser}}
+						<div class="row  text-center">
+							<!--<div class="col-md-6">-->
+							<a href="/createGame">
+								<button class="btn btn-default" style="background: #607d8b; margin-right: 15px;">
+									Create Game
+								</button>
+							</a>
+							<!--</div>-->
+							<!--<div class="col-md-3">-->
+							<a href="/game">
+								<button class="btn btn-default" style="background: #607d8b; margin-left: 15px;">
+									Join Game
+								</button>
+							</a>
+							<!--</div>-->
 
+						</div>
+					{{else}}
+						<h4 class="text-center">Please login</h4>
+					{{/if}}
+					<div class="text-center">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6" style="color: black">
+					<div class="row text-right" style="margin-right: 15px;">
+						{{#if currentUser}}
+							<a style="color: white" onclick="Meteor.logout()">Logout</a>
+						{{else}}
+							{{> loginButtons}}
+						{{/if}}
+					</div>
+					<div class="card well">
+						<p><em>ShootAt.Me</em> is an advanced mobile game for iOS and Android devices which uses QR codes, Houndify, and Augmented Reality to create a high quality virtual experience.</p>
+						<p>The objective of this game is to capture all of your opponents flags before they get yours.</p>
+						<br>
+
+						<h3>Resources Used</h3><p style="font-weight: bold">For more information, click to find how we used each.</p>
+						<dl>
+							<li>Google Cardboard</li>
+							<li>Houndify</li>
+						</dl>
+
+					</div>
+				</div>
 			</div>
-		{{else}}
-			<h1>Please login</h1>
-			{{> loginButtons}}
-		{{/if}}
+		</div>
+	</div>
+	<div class="container" style="margin-top: 35px;">
+		<div class="card">
+			<div class= "card-content">
+				<span class="card-title">What is shootat.me?</span>
+				<p class="explanation">
+					shootat.me is a multiplatform, AR (Augmented Reality) game developed in Android Studio and Xcode during PennApps Spring XIII.
+				</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class= "card-content">
+				<span class="card-title">Who built shootat.me?</span>
+				<p class="explanation">
+				<ul>
+					<li>Max Matthews, Hacker guru and backend developer.</li>
+					<li>Tristan Wiley, Android developer.</li>
+					<li>Gurnoor Singh, IOS developer.</li>
+					<li>Eric cugota, android and frontend developer.</li>
+				</ul>
+				</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class= "card-content">
+				<span class="card-title">What should I expect when I play it?</span>
+				<p class="explanation">
+					this is how the game is seen on your device. you have a reticle, a UI, and your objective is to "tag" as many enemy QR's as possible.
+				</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class= "card-content">
+				<span class="card-title">What are the rules?</span>
+				<ul>
+					<li>Each player starts with 100 points(health).</li>
+					<li>Shooting an enemy removes health from him, shooting from a more further distance removes less points.</li>
+					<li>When a player looses all it's points, he's kicked out of the game.</li>
+					<li>The last man standing is the winner.</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </template>

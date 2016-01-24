@@ -26,3 +26,5 @@ msavin:mongol
 accounts-ui
 accounts-password
 accounts-base
+materialize:materialize
+maazalik:highcharts-gauge

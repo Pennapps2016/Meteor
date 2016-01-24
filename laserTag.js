@@ -1,23 +1,27 @@
 Games = new Mongo.Collection('games');
 
 if (Meteor.isClient) {
+	Template.watchGame.helpers({});
+
+
 	Accounts.ui.config({
 		passwordSignupFields: "USERNAME_ONLY"
 	});
 
+
 	Template.createGame.events({
-		"submit #newGameForm": function(event){
+		"submit #newGameForm": function (event) {
 			lastGame = Games.findOne({}, {sort: {createdAt: -1}});
 			numOfPlayers = event.target.numberOfPlayers.value;
 
-			if (lastGame && lastGame.gameNum){
-				gameNum = lastGame.gameNum+1;
+			if (lastGame && lastGame.gameNum) {
+				gameNum = lastGame.gameNum + 1;
 			} else {
 				gameNum = 1;
 			}
 			event.preventDefault();
 			players = [];
-			for (i = 1; i <= numOfPlayers; i++){
+			for (i = 1; i <= numOfPlayers; i++) {
 				players.push({
 					'playerNum': i,
 					'score': 100
@@ -30,34 +34,118 @@ if (Meteor.isClient) {
 				"players": players
 			});
 
-			FlowRouter.go('/game/'+gameNum);
+			FlowRouter.go('/game/' + gameNum);
 		}
 	});
 
 	Template.joinGame.events({
-		"submit #joinGameForm": function(event){
+		"submit #joinGameForm": function (event) {
 			event.preventDefault();
 			gameNumber = event.target.gameNumber.value;
 			game = Games.find({"gameNum": gameNumber});
 
-			if (game){
-				FlowRouter.go('/game/'+gameNumber)
+			if (game) {
+				FlowRouter.go('/game/' + gameNumber)
 			}
 		}
 	});
 
 	Template.watchGame.helpers({
-		"gameNum": function(){
+		"gameNum": function () {
 			return FlowRouter.getParam("gameNum");
 		},
-		"players": function(){
+		"players": function () {
 			game = Games.findOne({"gameNum": parseInt(FlowRouter.getParam("gameNum"))});
 
-			if (game && game.players){
+
+			if (game && game.players) {
 				return game.players;
 			}
+		},
+		"getRandNum": function(){
+			return Math.floor(Math.random()*1000);
+		},
+		"getChart": function () {
+			return {
+				chart: {
+					type: 'solidgauge',
+					backgroundColor: null,
+					width: 350,
+					height: 250,
+				},
+
+				title: null,
+				backgroundColor: null,
+				pane: {
+					center: ['50%', '85%'],
+					size: '140%',
+					startAngle: -90,
+					endAngle: 90,
+					background: {
+						backgroundColor: '#EEE',
+						innerRadius: '60%',
+						outerRadius: '100%',
+						shape: 'arc'
+					}
+				},
+
+				tooltip: {
+					enabled: false
+				},
+
+				yAxis: {
+					min: 0,
+					max: 100,
+					color: "#ffffff",
+					title: {
+						text: 'Health Points'
+					},
+
+					stops: [
+						[0.9, '#00FF00'],
+						[0.5, '#FFFF00'],
+						[0.1, '#f44336']
+					],
+					lineWidth: 0,
+					minorTickInterval: null,
+					tickPixelInterval: 400,
+					tickWidth: 0,
+					title: {
+						y: -70
+					},
+					labels: {
+						y: 16
+					}
+				},
+
+				plotOptions: {
+					solidgauge: {
+						dataLabels: {
+							y: 5,
+							borderWidth: 0,
+							useHTML: true
+						}
+					}
+				},
+
+				credits: {
+					enabled: false
+				},
+
+				series: [{
+					name: 'Health Points',
+					data: [this.score],
+					dataLabels: {
+						format: '<div style="text-align:center"><span style="font-size:25px;color:white">{y}</span><br/>' +
+						'<span style="font-size:12px;color:silver">health points</span></div>'
+					},
+					tooltip: {
+						valueSuffix: ' points'
+					}
+				}]
+			};
 		}
-	})
+	});
 }
 
 if (Meteor.isServer) {
@@ -101,7 +189,6 @@ if (Meteor.isServer) {
 						"players": game.players
 					}
 				});
-
 				game = Games.findOne({"gameNum": parseInt(this.urlParams.gameId)});
 				return game;
 			} else{

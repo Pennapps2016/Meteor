@@ -1,12 +1,22 @@
 <template name="watchGame">
+	<div class="container-fluid z-depth-3" style="margin: 0; padding: 0;">
+		<h3 class="text-center" style="background: #f44336; color: white; margin: 0; padding: 0; padding-top: 15px; padding-bottom: 15px;">Game #{{ gameNum }}</h3>
+	</div>
 	<div class="container">
-		<h1 class="text-center">Watch Game #{{ gameNum }}</h1>
 		<div class="row text-center">
 			{{#each players}}
-				<h2>Player #{{playerNum}}:</h2>
-				<h1>{{score}}</h1>
-				<br><br>
+				<div class="col s12 m6">
+					<div class="card" style="background: #607d8b;">
+						<div class="card-content white-text">
+							<span class="card-title">Player #{{playerNum}}</span>
+							<div class="text-center" style="margin: 0 auto;">
+								{{> highchartsHelper chartId=getRandNum chartWidth="100%" charHeight="100%" chartObject=getChart}}
+							</div>
+						</div>
+					</div>
+				</div>
 			{{/each}}
 		</div>
 	</div>
 </template>
+

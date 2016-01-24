@@ -1,1 +1,11 @@
-/* CSS declarations go here */
+#login-sign-in-link{
+	color: white;
+}
+
+.highcharts-yaxis-labels text{
+	color: white;
+}
+
+.highcharts-container{
+	margin: 0 auto;
+}
